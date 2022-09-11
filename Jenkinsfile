@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 echo '=== Building Petclinic Docker Image ==='
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Push Docker Image') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 echo '=== Pushing Petclinic Docker Image ==='
