@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('Build Application') { 
             steps {
-                echo '=== Building Petclinic Application ==='
+                echo '=== Consrucion de Aplicacion Petclinic ==='
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Test Application') {
             steps {
-                echo '=== Testing Petclinic Application ==='
+                echo '=== Pruebas de Aplicacion Petclinic ==='
                 sh 'mvn test'
             }
             post {
@@ -26,7 +26,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo '=== Building Petclinic Docker Image ==='
+                echo '=== Contrucion de la Imagen Docker ==='
                 script {
                     app = docker.build("daveid01/petclinic-spinnaker-jenkins")
                 }
@@ -37,7 +37,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo '=== Pushing Petclinic Docker Image ==='
+                echo '=== Publicacion de la Imagen Docker ==='
                 script {
                     GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
                     SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Remove local images') {
             steps {
-                echo '=== Delete the local docker images ==='
+                echo '=== Borrado de las imagenes locales ==='
                 sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
                 sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
             }
