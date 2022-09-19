@@ -3,7 +3,7 @@
 
 ## Architecture
 
-<img width="1042" alt="architecture-screenshot" src="images/Architecture.png">
+<img width="1042" alt="architecture-screenshot" src="images/TFM - Arquitectura AWS.jpg">
 
 <br />
 
