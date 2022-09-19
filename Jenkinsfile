@@ -51,8 +51,8 @@ pipeline {
         stage('Remove local images') {
             steps {
                 echo '=== Borrado de las imagenes locales ==='
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
+                sh("docker rmi -f daveid01/petclinic-spinnaker-jenkins:latest || :")
+                sh("docker rmi -f daveid01/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
             }
         }
     }
